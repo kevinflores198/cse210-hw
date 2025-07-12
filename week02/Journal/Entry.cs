@@ -1,13 +1,13 @@
+using System.ComponentModel.DataAnnotations;
+
 public class Entry
 {
-    public string Date { get; set; }
-    public string Prompt { get; set; }
-    public string Response { get; set; }
-    public Entry(string prompt, string response)
+    // Represents a single journal entry.
+    public string _promptText;
+    public string _enteryText;
+    public DateTime _date = DateTime.Now;
+    public void Display()
     {
-        Date = DateTime.Now.ToString("yyyy-MM-dd");
-        Prompt = prompt;
-        Response = response;
+        Console.WriteLine($"Date: {_date}: Prompt: {_promptText}\n{_enteryText}");
     }
 }
- 
