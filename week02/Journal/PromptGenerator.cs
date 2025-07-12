@@ -9,8 +9,9 @@ public class PromptGenerator
         {
         "Who was the most interesting person I interacted with today?",
         "What was the best part of my day?",
-        "Whayt would you have liked to do diferent today?",
+        "What would you have liked to do diferent today?",
         "Who do I have to thank today to and why?",
+        "Did I have a personal own moment? What did I do for me today?",
         "What was the best meal you ate today?"
         };
         // we create the a random to receive one of the prompts.

@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 
 class Program
 {
@@ -6,34 +7,63 @@ class Program
     {
         PromptGenerator aPrompt = new PromptGenerator();
         Journal journal = new Journal();
-        int answer = 0;
         Console.WriteLine("Welcome to the Journal Program!");
-        // do-while to start again until the user selects 5 to close the program.
-        do
+        // while to start again until the user selects 5 to close the program.
+        int answer = 0;
+        while (answer != 2)
         {
-            Console.Write("Please select one of the following choic \n1. Write\n2. Display\n3. Load\n4. Save\n5. Quit\nWhat would you like to do?\n> ");
+            Console.Write("Please select one of the following: \n1. Write\n2. Display\n3. Load from file\n4. Save in file\n5. Save in JSON\n6. Load from JSON\n7. Close\nWhat would you like to do?\n> ");
             int option = int.Parse(Console.ReadLine());
             // switch options touse more than 2 options.
             switch (option)
             {
                 case 1:
-                    // Entry entry = new Entry();
-                    // Console.WriteLine(aPrompt.GetRandomPrompt());
-                    // entry._enteryText = Console.ReadLine();
-                    // entry._promptText = aPrompt.GetRandomPrompt();
-                    // journal.AddEntry(entry);
+                    // we initialize a new prompt random, and we print it
+                    string prompt = aPrompt.GetRandomPrompt();
+                    Console.WriteLine(prompt);
+                    // We star a new Entry and then we add it into the list.
+                    Entry entry = new Entry();
+                    // We save each entry and prompt each time the code starts again until we select 5.
+                    entry._date = DateTime.Now.ToString("yyyy-MM-dd");
+                    entry._enteryText = Console.ReadLine();
+                    entry._promptText = prompt;
+                    // We add each entry to the journal.
+                    journal.AddEntry(entry);
+                    System.Console.WriteLine("Entry added successfully!");
                     break;
                 case 2:
                     journal.DisplayAll();
                     break;
                 case 3:
-                    journal.LoadFromFile(null);
+                    System.Console.WriteLine("Please enter file to load: ");
+                    string loadingFile = Console.ReadLine();
+                    journal.LoadFromFile(loadingFile);
                     break;
                 case 4:
-                    journal.SaveToFile(null);
+                    string fileName = "journal.txt";
+                    journal.SaveToFile(fileName);
+                    System.Console.WriteLine("entry charged successfully!");
+                    break;
+                case 5:
+                    string jsonSaveFile = Console.ReadLine();
+                    journal.SaveToJson(jsonSaveFile);
+                    Console.WriteLine("Saved in JSON successfully.\n");
+                    break;
+                case 6:
+                    Console.Write("Please enter JSON to load: ");
+                    string jsonLoadFile = Console.ReadLine();
+                    journal.LoadFromJson(jsonLoadFile);
+                    Console.WriteLine("Loaded from archive JSON successfully.\n");
+                    break;
+                case 7:
+                    Console.Write("Would you like to add another entry?\n1.Yes/2.No\n> ");
+                    answer = int.Parse(Console.ReadLine());
+                    break;
+                default:
+                    Console.WriteLine("Invalid option, choose from 1 to 5.");
                     break;
             }
-        } while (answer != 5);
+        }
         Console.WriteLine("Thanks for being here, we wait you next time!");
     }
 }
