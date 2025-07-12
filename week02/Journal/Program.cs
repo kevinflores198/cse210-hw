@@ -1,6 +1,16 @@
 using System;
 using System.Net;
+//---What have I done to exceed the requirements:
 
+//I Made two new behaviors SaveToJson(string):void / LoadFromJson(string):void in Journal.cs
+//SaveToJson(string):void = In those behaviors I shows how to save the output unto 
+//a Json. I used JsonSerializer to change the list to text JSON. Then we save the file
+//into an archive using WriteAllText(file,json).
+//LoadFromJson(string):void = In charge of loading the file Json. We indicate if 
+//it exists, then we read the file text and we make a list of entry with  JsonSerializer.Deserialize.
+//Then, in Program.cs I added those two behaviors into case 5 and 6 in the switch to show
+//the function of that. running the file in case 5, it will save the new string jsonSaveFile
+//into the journal. then we can see it on the .json. Same with case 6, load the Json.
 class Program
 {
     static void Main(string[] args)

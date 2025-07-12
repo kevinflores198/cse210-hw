@@ -58,7 +58,7 @@ public class Journal
             // legible archive
             WriteIndented = true
         });
-        // It saves the text into a achive.
+        // It saves the text into a archive.
         File.WriteAllText(filename, jsonString);
     }
     public void LoadFromJson(string filename)
