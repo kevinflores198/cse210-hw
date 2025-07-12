@@ -45,6 +45,7 @@ class Program
                     System.Console.WriteLine("entry charged successfully!");
                     break;
                 case 5:
+                    System.Console.WriteLine("Please enter the name of the JSON file? ");
                     string jsonSaveFile = Console.ReadLine();
                     journal.SaveToJson(jsonSaveFile);
                     Console.WriteLine("Saved in JSON successfully.\n");
@@ -60,7 +61,7 @@ class Program
                     answer = int.Parse(Console.ReadLine());
                     break;
                 default:
-                    Console.WriteLine("Invalid option, choose from 1 to 5.");
+                    Console.WriteLine("Invalid option, choose from 1 to 7.");
                     break;
             }
         }
