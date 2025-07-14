@@ -41,12 +41,10 @@ public class Journal
             // using the \n we are separateing one each other.
             string[] parts = line.Split("\n");
             // creating new entry and adding this data to the list.
-            Entry entry = new Entry
-            {
-                _date = parts[0],
-                _promptText = parts[1],
-                _enteryText = parts[2]
-            };
+            Entry entry = new Entry();
+            entry._date = parts[0];
+            entry._promptText = parts[1];
+            entry._enteryText = parts[2];
             _entries.Add(entry);
         }
     }
