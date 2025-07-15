@@ -9,6 +9,6 @@ public class Entry
     public string _enteryText { set; get; }
     public void Display()
     {
-        Console.WriteLine($"Date: {_date}: \nPrompt: {_promptText}\n> {_enteryText}");
+        Console.WriteLine($"Date: {_date}: - Prompt: {_promptText}\n> {_enteryText}");
     }
 }

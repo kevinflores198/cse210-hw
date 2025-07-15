@@ -27,7 +27,7 @@ public class Journal
             // for each entry we are going to save in an archive this line.
             foreach (Entry entry in _entries)
             {
-                outputFile.WriteLine($"{entry._date}\n{entry._promptText}\n{entry._enteryText}\n");
+                outputFile.WriteLine($"{entry._date} | {entry._promptText} | {entry._enteryText}");
             }
         }
     }
@@ -39,7 +39,7 @@ public class Journal
         foreach (string line in lines)
         {
             // using the \n we are separateing one each other.
-            string[] parts = line.Split("\n");
+            string[] parts = line.Split("|");
             // creating new entry and adding this data to the list.
             Entry entry = new Entry
             {
