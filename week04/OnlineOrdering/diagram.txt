@@ -1,0 +1,57 @@
+Class Product 
+
+- Attributes:
+_name: string
+_ID: string
+_price: double
+_quantityEachProduct: int
+
+Product(name: string, ID: string, price: double, _quantityEachProduct: int)
+
+- Methods:
+TotalCostProduct(): void
+
+-------------------------------
+
+Class Customer
+
+Attributes:
+_name: string
+_address: Address
+
+Customer(name: string, address: string)
+
+- Methods:
+FromUSAOrNot(Address address): bool
+
+-------------------------------
+
+Class Address
+
+- Attributes:
+_street: string
+_city: string
+_state: string
+_country: string
+
+Address(street: string, city: string, stete: string, country: string)
+
+- Methods:
+FromUSAOrNot(): bool
+DisplayAddress(): void
+
+-------------------------------
+
+Class Order:
+
+- Attributes:
+_customer: Customer
+_products: List<Products> 
+
+Order(Customer: Customer, products: string)
+
+- Methods:
+AddProduct(): void
+CalculateTotal(): int
+PackingLabel(): string
+ShippingLabel(): string

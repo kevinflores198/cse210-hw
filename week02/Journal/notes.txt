@@ -1,0 +1,22 @@
+class Entry
+_date: string
+_promptText: string
+_enteryText: string
+- Behaviors:
+Display(): void
+--------------------
+class PromptGenerator
+_prompts: List
+- Behaviors
+GetRandomPrompt() : string
+--------------------
+class Journal
+_entries: List
+-Behaviors 
+AddEntry(Entry): void
+DisplayAll(): void
+SaveToFile(string): void
+LoadFromFile(string): void
+
+
+

@@ -1,0 +1,44 @@
+Class 1:Scripture
+use the reference and each word to hide it.
+Attributes: 
+_wordsList: List<Word>
+_reference: Reference
+
+Methods:
+HideWords(): void
+GetDisplay(): string
+IsHidden() : bool
+
+cosntructors:
+Scripture(Reference, text)
+
+----------------------------------------
+Class 2: Reference
+saves the chapter, verse and book
+Attributes: 
+_book: string
+_chapter: int
+_verse: int
+_endVerse: int
+
+Methods:
+Display(): void
+set and get 
+
+Constructors:
+reference(book, chapter, verse, endVerse)
+reference(book, chapter, verse)
+----------------------------------------
+Class 3: Word
+represents one word of the text. shown or hidden.
+Attributes: 
+_text: string
+_hidden: bool
+
+Methods: 
+Hide() : void
+Hidden() : bool
+Display() : string
+
+constructor:
+Word(text)
