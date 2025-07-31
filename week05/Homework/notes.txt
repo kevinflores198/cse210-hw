@@ -1,0 +1,22 @@
+Student class
+string: name
+string: topic
+
+Student(string name, string topic)
+
+Summary(): string (student name, string topic)
+-------------------------------------------------------------------------------------
+Math class : Student
+string: textBookSection
+string: problem
+
+Math(string name, string topic, string textBookSection, string problem)
+
+HomeworkList(): string (Display homework list including the section number and the problems)
+-------------------------------------------------------------------------------------
+Writing : Student
+string: assignamentTitle
+
+Writing(string name, string topic, string assignamentTitle)
+
+WritingInformation(): string (consists of the title and the student's name)
