@@ -8,7 +8,6 @@ public class Writing : Student
     }
     public string WritingInformation()
     {
-
-        return $"{_assignamentTitle} by {base.GetName()}";
+        return $"{_assignamentTitle} by {base.GetName}";
     }
 }

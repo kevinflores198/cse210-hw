@@ -1,0 +1,56 @@
+Class Activity
+    -Attibutes:
+    string:  _activityName
+    string:  _description
+    int:  _duration
+
+    -Constructor
+    Activity()
+
+    -Methods:
+    DisplayMessage(): void
+    DisplayMesageEnd(): void
+    Spinner(int: time): void
+    Counter(int: time): void
+---------------------------
+
+Class Breathing: Activity
+    -Attibutes:
+    Called by Activity class
+
+    -Constructor
+    Breathing()
+
+    -Methods:
+    InitialMessage(): void
+        
+---------------------------
+Class Reflection : Activity
+    -Attibutes:
+    List string: _prompts
+    List string _questions
+
+    -Constructor
+    Reflection()
+
+    -Methods:
+    InitialMessage(): void
+    RandomPrompt(): string
+    RandomQuestion(): string
+    DisplayPrompt(): void
+    DisplayQuestions(): void
+
+---------------------------
+Class Listing :Activity
+    -Attibutes:
+    int: _counter
+    List string:  _prompts
+
+    -Constructor
+    Listing()
+
+    -Methods:
+    InitialMessage(): void
+    RandomPrompt(): string
+    ListItems(): List string
+
