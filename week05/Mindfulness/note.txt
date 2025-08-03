@@ -50,7 +50,7 @@ Class Listing :Activity
     Listing()
 
     -Methods:
-    InitialMessage(): void
+    run(): void
     RandomPrompt(): string
     ListItems(): List string
 

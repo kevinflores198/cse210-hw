@@ -8,17 +8,19 @@ public class Activity_Breathing : Activity
     {
         System.Console.WriteLine("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing");
         System.Console.WriteLine("How long, in seconds, would you like for you session?");
-        int time = int.Parse(Console.ReadLine());
+        _duration = int.Parse(Console.ReadLine());
+
         System.Console.WriteLine("Get ready...");
         Spinner(5);
-        int cycle = 6;
-        while (time >= cycle)
+
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
+        while (DateTime.Now < endTime)
         {
             System.Console.WriteLine($"Breathe in...");
             Counter(3);
             System.Console.WriteLine("Now breathe out...");
             Counter(3);
-            time -= cycle;
         }
     }
 
