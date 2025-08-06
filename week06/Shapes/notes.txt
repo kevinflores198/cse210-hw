@@ -1,0 +1,23 @@
+shape class
+string: color
+getter setter
+
+Area(abstract)
+shape()
+-----------------------------------
+Squere class
+int: side
+
+area(): int
+-----------------------------------
+Rectangle class
+int: length
+int: width
+area( multiplicar los 4 lados): int
+-----------------------------------
+Circle class
+_radius
+
+area(): float
+-----------------------------------
+
