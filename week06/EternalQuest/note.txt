@@ -1,0 +1,46 @@
+GoalManager Class 
+
+GoalManager()
+
+Start(): void
+DisplayUserInfo(): void
+CreatGoal(): void
+ListGoalNames(): void
+ListGoalDetails(): void
+RecordEvent(): void - to report the did an event
+SaveGoal(): void
+LoadGoal(): void
+
+------------------------------
+Goal Class abstract
+
+string: _name
+string: _description
+string: _point
+
+Goal(name, description, point)
+
+RecordEvent(): void
+IsComplete(): bool
+DetailString(): string
+
+-------------------------------
+SimpleGoal Class : Goal
+
+RecordEvent(): void
+isComplete(): bool
+-------------------------------
+EternialGoal Class : Goal
+
+RecordEvent(): void
+isComplete(): bool
+-------------------------------
+CheckList Class : Goal
+
+int: _amountCompleted
+int: _bonus
+
+
+RecordEvent(): void
+isComplete(): bool
+-------------------------------
