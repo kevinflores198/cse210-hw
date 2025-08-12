@@ -4,11 +4,11 @@ public class GoalList : Goal
     private int _target;
     private int _bonus;
 
-    public GoalList(string name, string description, int point, int target, int bonus) : base(name, description, point)
+    public GoalList(string name, string description, int point,int amountCompleted, int target, int bonus) : base(name, description, point)
     {
         _target = target;
         _bonus = bonus;
-        _amountCompleted=0;
+        _amountCompleted = amountCompleted;
     }
 
     public GoalList()
@@ -43,7 +43,12 @@ public class GoalList : Goal
     {
         if (_amountCompleted < _target)
         {
+            System.Console.WriteLine("You have completed another Check list goal!");
             _amountCompleted++;
+        }
+        else if (_amountCompleted == _target)
+        {
+            System.Console.WriteLine("Goal completed. Can go to main menu and create another one.");
         }
     }
     public override bool IsComplete()
@@ -52,11 +57,18 @@ public class GoalList : Goal
     }
     public override string StringRepresentation()
     {
-        return $"Check list Goal | {_name}|{_description}|{_point}|{_amountCompleted}|{_target}|{_bonus}";
+        return $"Check list Goal|{_name}|{_description}|{_point}|{_amountCompleted}|{_target}|{_bonus}";
     }
     public override string DetailString()
     {
-        return $"Check list goals | {_name} ({_description}) | Completed: {_amountCompleted}/{_target} | Bonus: '{_bonus}'";
-
+        if (_target == _amountCompleted)
+        {
+        return $"[x] Check list goals | {_name} ({_description}) | Completed: {_amountCompleted}/{_target} | Bonus: '{_bonus}'";
+        }
+        else
+        {
+        return $"[ ] Check list goals | {_name} ({_description}) | Completed: {_amountCompleted}/{_target} | Bonus: '{_bonus}'";
+            
+        }
     }
 }

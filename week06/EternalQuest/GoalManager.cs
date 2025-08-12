@@ -43,7 +43,7 @@ public class GoalManager
     }
     public void ListGoalDetail()
     {
-        foreach (var goal in _lg)
+        foreach (Goal goal in _lg)
         {
             Console.WriteLine(goal.DetailString());
         }
@@ -81,8 +81,8 @@ public class GoalManager
 
                 Console.Write("What is the bonus for accomplishing it that many times? ");
                 int bonus = int.Parse(Console.ReadLine());
-
-                g = new GoalList(name, description, point, target, bonus);
+                int amountCompleted = 0;
+                g = new GoalList(name, description, point, amountCompleted, target, bonus);
                 break;
             default:
                 System.Console.WriteLine("Please use a number between 1 and 3.");
@@ -92,11 +92,12 @@ public class GoalManager
     }
     public void RecordEvent()
     {
-        Console.WriteLine("Select goal number to record event:");
+        Console.WriteLine("Which goal did you accomplish? Enter the number:");
         ListGoalName();
+
         int choice = int.Parse(Console.ReadLine());
 
-        if (choice > 0 && choice <= _lg.Count)
+        if (choice == _lg.Count)
         {
             Goal goal = _lg[choice - 1];
             goal.RecordEvent();
@@ -126,7 +127,7 @@ public class GoalManager
             {
                 if (goal is GoalList gl)
                 {
-                    outputFile.WriteLine($"GoalList|{goal.GetName()}|{goal.GetDescription()}|{goal.GetPoint()}|{gl.GetAmountCompleted()}|{gl.GetAmountCompleted()}|{gl.GetBonus()}");
+                    outputFile.WriteLine($"GoalList|{goal.GetName()}|{goal.GetDescription()}|{goal.GetPoint()}|{gl.GetAmountCompleted()}|{gl.GetTarget()}|{gl.GetBonus()}");
                 }
                 else if (goal is GoalEternal)
                 {
@@ -134,7 +135,7 @@ public class GoalManager
                 }
                 else if (goal is GoalSimple)
                 {
-                    outputFile.WriteLine($"GoalSimple|{goal.GetName}|{goal.GetDescription()}|{goal.GetPoint()}|{goal.IsComplete()}");
+                    outputFile.WriteLine($"GoalSimple|{goal.GetName()}|{goal.GetDescription()}|{goal.GetPoint()}|{goal.IsComplete()}");
                 }
             }
         }
@@ -142,6 +143,7 @@ public class GoalManager
     }
     public void LoadFromTxt(string file)
     {
+        _lg.Clear();
         if (File.Exists(file))
         {
             string[] lines = File.ReadAllLines(file);
@@ -158,7 +160,7 @@ public class GoalManager
                         gs.SetName(parts[1]);
                         gs.SetDescription(parts[2]);
                         gs.SetPoint(int.Parse(parts[3]));
-                        if (bool.Parse(parts[4])) gs.IsComplete();
+                        gs.SetComplete(bool.Parse(parts[4]));
                         _lg.Add(gs);
                         break;
 

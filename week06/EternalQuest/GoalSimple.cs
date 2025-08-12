@@ -1,3 +1,5 @@
+using System.Drawing;
+
 public class GoalSimple : Goal
 {
     private bool _isComplete;
@@ -10,10 +12,17 @@ public class GoalSimple : Goal
     public GoalSimple()
     {
     }
-
+    public void SetComplete(bool complete)
+    {
+        _isComplete = complete;
+    }
     public override void RecordEvent()
     {
-        _isComplete = true;
+        if (!_isComplete)
+        {
+            System.Console.WriteLine("You have completed a simple goal!");
+            _isComplete = true;
+        }
     }
     public override bool IsComplete()
     {
@@ -21,10 +30,19 @@ public class GoalSimple : Goal
     }
     public override string StringRepresentation()
     {
-        return $"Goal Simple | {_name} ({_description}) | {(IsComplete() ? "Completed" : "Not Completed")}";
+        return $"Goal Simple|{_name} ({_description})|{(IsComplete() ? "Completed" : "Not Completed")}";
     }
     public override string DetailString()
     {
-        return $"Goal Simple | {_name}|{_description}|{_point}|{_isComplete}";
+        if (IsComplete())
+        {
+            return $"[x] Goal Simple | {_name}|{_description}|{_point}|{_isComplete}";
+
+        }
+        else
+        {
+            return $"[ ] Goal Simple | {_name}|{_description}|{_point}|{_isComplete}";
+
+        }
     }
 }
