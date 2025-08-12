@@ -30,7 +30,7 @@ public class GoalSimple : Goal
     }
     public override string StringRepresentation()
     {
-        return $"Goal Simple|{_name} ({_description})|{(IsComplete() ? "Completed" : "Not Completed")}";
+        return $"GoalSimple|{_name} ({_description})|{(IsComplete() ? "Completed" : "Not Completed")}";
     }
     public override string DetailString()
     {

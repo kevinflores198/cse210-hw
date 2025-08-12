@@ -10,6 +10,14 @@ public class GoalManager
         _lg = new List<Goal>();
         _score = 0;
     }
+    public void SetScore(int score)
+    {
+        _score = score;
+    }
+    public int GetScore()
+    {
+        return _score;
+    }
     public void Start()
     {
         DisplayPlayerInfo();
@@ -43,7 +51,14 @@ public class GoalManager
     }
     public void ListGoalDetail()
     {
-        foreach (Goal goal in _lg)
+        if (_lg.Count == 0)
+        {
+            Console.WriteLine("No goals loaded.");
+            return;
+        }
+
+        Console.WriteLine("List of goals:");
+        foreach (var goal in _lg)
         {
             Console.WriteLine(goal.DetailString());
         }
@@ -97,14 +112,15 @@ public class GoalManager
 
         int choice = int.Parse(Console.ReadLine());
 
-        if (choice == _lg.Count)
+        if (choice > 0 && choice <= _lg.Count)
         {
             Goal goal = _lg[choice - 1];
             goal.RecordEvent();
 
+            _score += goal.GetPoint();
+
             if (goal.IsComplete())
             {
-                _score += goal.GetPoint();
                 Console.WriteLine("Goal completed! Score added.");
             }
             else
@@ -116,8 +132,6 @@ public class GoalManager
         {
             Console.WriteLine("Invalid choice.");
         }
-
-
     }
     public void SaveToTxt(string file)
     {
@@ -155,7 +169,7 @@ public class GoalManager
 
                 switch (type)
                 {
-                    case "Goal Simple":
+                    case "GoalSimple":
                         GoalSimple gs = new GoalSimple();
                         gs.SetName(parts[1]);
                         gs.SetDescription(parts[2]);
@@ -164,7 +178,7 @@ public class GoalManager
                         _lg.Add(gs);
                         break;
 
-                    case "Goal Eternal":
+                    case "GoalEternal":
                         GoalEternal ge = new GoalEternal();
                         ge.SetName(parts[1]);
                         ge.SetDescription(parts[2]);
@@ -172,7 +186,7 @@ public class GoalManager
                         _lg.Add(ge);
                         break;
 
-                    case "Goal List":
+                    case "GoalList":
                         GoalList gl = new GoalList();
                         gl.SetName(parts[1]);
                         gl.SetDescription(parts[2]);
@@ -183,6 +197,43 @@ public class GoalManager
                         _lg.Add(gl);
                         break;
                 }
+            }
+        }
+        else
+        {
+            Console.WriteLine($"File '{file}' not found.");
+        }
+    }
+
+    
+    public void Spinner(int time)
+    {
+        List<string> animation = new List<string>();
+        animation.Add("|");
+        animation.Add("/");
+        animation.Add("-");
+        animation.Add("\\");
+        animation.Add("|");
+        animation.Add("/");
+        animation.Add("-");
+        animation.Add("\\");
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(time);
+
+        int i = 0;
+
+        while (DateTime.Now < endTime)
+        {
+            string s = animation[i];
+            System.Console.Write(s);
+            Thread.Sleep(1000);
+            System.Console.Write("\b \b");
+
+            i++;
+
+            if (i >= animation.Count)
+            {
+                i = 0;
             }
         }
     }

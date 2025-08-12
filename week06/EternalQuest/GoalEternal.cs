@@ -1,7 +1,7 @@
 public class GoalEternal : Goal
 {
 
-    public GoalEternal(string name, string description, int point) 
+    public GoalEternal(string name, string description, int point)
     : base(name, description, point)
     {
     }
@@ -9,15 +9,12 @@ public class GoalEternal : Goal
     public GoalEternal()
     {
     }
-    
+
 
     public override void RecordEvent()
     {
-        if (IsComplete())
-        {
-            System.Console.WriteLine("You have completed an eternal goal!");
-            _point++;
-        }
+        Console.WriteLine("You have recorded progress on an eternal goal!");
+
     }
 
     public override bool IsComplete()
@@ -26,7 +23,7 @@ public class GoalEternal : Goal
     }
     public override string StringRepresentation()
     {
-        return $"Eternal Goal|{_name}|{_description}|{_point}";
+        return $"GoalEternal|{_name}|{_description}|{_point}";
     }
     public override string DetailString()
     {

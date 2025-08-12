@@ -11,26 +11,26 @@ class Program
         {
             gm.Start();
             int choise = int.Parse(Console.ReadLine());
+            gm.Spinner(5);
             switch (choise)
             {
                 case 1:
                     gm.CreateGoal();
                     break;
                 case 2:
-                    System.Console.WriteLine("List of goals: ");
                     gm.ListGoalName();
                     break;
                 case 3:
-                    System.Console.WriteLine("Please enter the file's name? ");
-                    string file = Console.ReadLine();
-                    gm.SaveToTxt(file);
-                    Console.WriteLine($"Saved in {file} successfully.\n");
+                    System.Console.WriteLine("Please enter file name to save: ");
+                    gm.SaveToTxt(Console.ReadLine());
+                    gm.Spinner(3);
+                    Console.WriteLine("File saved successfully.\n");
                     break;
                 case 4:
                     Console.Write("Please enter file's name to load: ");
-                    file = Console.ReadLine();
-                    gm.LoadFromTxt(file);
-                    Console.WriteLine($"Loaded from archive {file} successfully.\n");
+                    gm.LoadFromTxt(Console.ReadLine());
+                    gm.Spinner(3);
+                    Console.WriteLine("File loaded from archive successfully.\n");
                     break;
                 case 5:
                     gm.RecordEvent();
