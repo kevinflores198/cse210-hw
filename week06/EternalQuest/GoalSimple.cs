@@ -1,26 +1,30 @@
 public class GoalSimple : Goal
 {
     private bool _isComplete;
-    public GoalSimple() { }
 
-    public GoalSimple(string name, string description, int point, bool isComplete) : base(name, description, point)
+    public GoalSimple(string name, string description, int point) : base(name, description, point)
     {
-        _isComplete = isComplete;
+        _isComplete = false;
     }
+
+    public GoalSimple()
+    {
+    }
+
     public override void RecordEvent()
     {
-        throw new NotImplementedException();
+        _isComplete = true;
     }
     public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        return _isComplete;
     }
     public override string StringRepresentation()
     {
-        throw new NotImplementedException();
+        return $"Goal Simple | {_name} ({_description}) | {(IsComplete() ? "Completed" : "Not Completed")}";
     }
     public override string DetailString()
     {
-        throw new NotImplementedException();
+        return $"Goal Simple | {_name}|{_description}|{_point}|{_isComplete}";
     }
 }

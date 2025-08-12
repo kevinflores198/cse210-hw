@@ -21,18 +21,19 @@ class Program
                     gm.ListGoalName();
                     break;
                 case 3:
-                    System.Console.WriteLine("Please enter the name of the JSON file? ");
-                    string jsonSaveFile = Console.ReadLine();
-                    gm.SaveToJson(jsonSaveFile);
-                    Console.WriteLine("Saved in JSON successfully.\n");
+                    System.Console.WriteLine("Please enter the file's name? ");
+                    string file = Console.ReadLine();
+                    gm.SaveToTxt(file);
+                    Console.WriteLine($"Saved in {file} successfully.\n");
                     break;
                 case 4:
-                    Console.Write("Please enter JSON to load: ");
-                    string jsonLoadFile = Console.ReadLine();
-                    gm.LoadFromJson(jsonLoadFile);
-                    Console.WriteLine("Loaded from archive JSON successfully.\n");
+                    Console.Write("Please enter file's name to load: ");
+                    file = Console.ReadLine();
+                    gm.LoadFromTxt(file);
+                    Console.WriteLine($"Loaded from archive {file} successfully.\n");
                     break;
                 case 5:
+                    gm.RecordEvent();
                     break;
                 case 6:
                     break;

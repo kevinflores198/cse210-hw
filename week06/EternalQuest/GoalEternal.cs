@@ -1,24 +1,29 @@
 public class GoalEternal : Goal
 {
-    public GoalEternal() { }
 
     public GoalEternal(string name, string description, int point) : base(name, description, point)
     {
     }
+
+    public GoalEternal()
+    {
+    }
+
     public override void RecordEvent()
     {
-        throw new NotImplementedException();
+        
     }
+
     public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        return false;
     }
     public override string StringRepresentation()
     {
-        return $"Eternal Goal: {GetName()} | {GetDescription} | {GetPoint()}";
+        return $"Eternal Goal | {_name}|{_description}|{_point}";
     }
     public override string DetailString()
     {
-        throw new NotImplementedException();
+        return $"Eternal Goal | {_name} ({_description})";
     }
 }
