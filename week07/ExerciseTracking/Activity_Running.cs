@@ -2,31 +2,35 @@ using System.Data;
 
 public class Activity_Running : Activity
 {
-    public Activity_Running() : base()
+    private double _distance;
+    public Activity_Running(DateTime date, int minutes, double distance) : base(date, minutes)
+    {
+        _distance = distance;
+    }
+    public Activity_Running()
     {
     }
-    public override void GetDistance()
+    public void SetDistance(double distance)
     {
-        System.Console.WriteLine("When did you do this activity");
-        _today = Console.ReadLine();
-        System.Console.WriteLine("How many minutes you ran?");
-        _minutes = double.Parse(Console.ReadLine());
-        System.Console.WriteLine("What was the distance you ran?(km)");
-        _distance = double.Parse(Console.ReadLine());
+        _distance = distance;
     }
-    public override void GetPace()
+    public override double GetDistance()
     {
-        throw new NotImplementedException();
+        return _distance;
     }
-
-    public override void GetSpeed()
+    public override double GetSpeed()
     {
-        throw new NotImplementedException();
+        return (GetDistance() / GetMinutes()) * 60;
     }
-    public override void GetSummary()
+    public override double GetPace()
     {
-        System.Console.WriteLine(
-            $"{_today}:\n--- Running --- ({_minutes} minutes)\nDistance: {_distance}km\nSpeed: {_speed}kph\nPace: {_pace} min per km");
+        return GetMinutes() / GetDistance();
     }
-
+    public override string GetSummary()
+    {
+            return $"---Running---\n {GetDate():dd MMM yyyy} ({GetMinutes()} min) - " +
+           $"\nDistance: {GetDistance()} km, " +
+           $"\nSpeed: {GetSpeed()} kph, " +
+           $"\nPace: {GetPace()} min per km";
+    }
 }

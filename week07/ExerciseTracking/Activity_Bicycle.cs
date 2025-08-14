@@ -1,29 +1,34 @@
 public class Activity_bicycles : Activity
 {
-    public Activity_bicycles() : base()
+    private double _speed;
+    public Activity_bicycles(DateTime date, int minutes, double speed) : base(date, minutes)
+    {
+        _speed = speed;
+    }
+    public Activity_bicycles()
     {
     }
-    public override void GetDistance()
+    public override double GetDistance()
     {
-        _distance = _speed * _minutes;
+        return (_speed * GetMinutes()) / 60;
     }
-    public override void GetSpeed()
+    public void SetSpeed(double speed)
     {
-        System.Console.WriteLine("When did you do this activity");
-        _today = Console.ReadLine();
-        System.Console.WriteLine("How many minutes you rode the bike?");
-        _minutes = double.Parse(Console.ReadLine());
-        System.Console.WriteLine("What is the speed?");
-        _speed = double.Parse(Console.ReadLine());
+        _speed = speed;
     }
-    public override void GetPace()
+    public override double GetSpeed()
     {
-        throw new NotImplementedException();
+        return _speed;
     }
-    public override void GetSummary()
+    public override double GetPace()
     {
-        System.Console.WriteLine(
-    $"{_today}:\n--- Bicycle --- ({_minutes} minutes)\nDistance: {_distance}km\nSpeed: {_speed}kph\nPace: {_pace} min per km");
-
+        return 60 / GetSpeed();
+    }
+    public override string GetSummary()
+    {
+        return $"---Cycling---\n: {GetDate():dd MMM yyyy} ({GetMinutes()} min) - " +
+           $"\nDistance: {GetDistance()} km, " +
+           $"\nSpeed: {GetSpeed()} kph, " +
+           $"\nPace: {GetPace()} min per km";
     }
 }

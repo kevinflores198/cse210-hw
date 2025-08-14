@@ -2,32 +2,39 @@ using System.Data;
 
 public class Activity_Swimming : Activity
 {
+    private int _laps;
+    public Activity_Swimming(DateTime date, int minutes, int laps) : base(date, minutes)
+    {
+        _laps = laps;
+    }
     public Activity_Swimming() : base()
     {
     }
-    public override void GetDistance()
+    public int GetLaps()
     {
-        throw new NotImplementedException();
+        return _laps;
     }
-
-    public override void GetSpeed()
+    public void SetLaps(int laps)
     {
-        throw new NotImplementedException();
+        _laps = laps;
     }
-
-    public override void GetPace()
+    public override double GetDistance()
     {
-        System.Console.WriteLine("When did you do this activity");
-        _today = Console.ReadLine();
-        System.Console.WriteLine("How many minutes you swam?");
-        _minutes = double.Parse(Console.ReadLine());
-        System.Console.WriteLine("Whay is the number of laps?");
-        _laps = double.Parse(Console.ReadLine());
+        return (_laps * 50) / 1000;
     }
-
-    public override void GetSummary()
+    public override double GetSpeed()
     {
-        System.Console.WriteLine(
-            $"{_today}:\n--- Running --- ({_minutes} minutes)\nLaps: {_laps}km\nSpeed: {_speed}kph\nPace: {_pace} min per km");
+        return (GetDistance() / GetMinutes()) * 60;
+    }
+    public override double GetPace()
+    {
+        return GetMinutes() / GetSpeed();
+    }
+    public override string GetSummary()
+    {
+        return $"---Swimming---\n: {GetDate():dd MMM yyyy} ({GetMinutes()} min) - " +
+           $"\nDistance: {GetDistance()} km, " +
+           $"\nSpeed: {GetSpeed()} kph, " +
+           $"\nPace: {GetPace()} min per km";
     }
 }
