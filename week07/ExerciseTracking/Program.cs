@@ -6,7 +6,7 @@ class Program
     static void Main(string[] args)
     {
         List<Activity> actList = new List<Activity>();
-        int report = 0;
+        int _report = 0;
         do
         {
             {
@@ -16,7 +16,7 @@ class Program
                 switch (option)
                 {
                     case 1:
-                        Activity_Running ar = new Activity_Running();
+                        ActivityRunning ar = new ActivityRunning();
                         System.Console.WriteLine("Please enter the distance ran: (KM)");
                         ar.SetDistance(double.Parse(Console.ReadLine()));
                         System.Console.WriteLine("How many minutes you ran?");
@@ -24,7 +24,7 @@ class Program
                         actList.Add(ar);
                         break;
                     case 2:
-                        Activity_Swimming asw = new Activity_Swimming();
+                        ActivitySwimming asw = new ActivitySwimming();
                         System.Console.WriteLine("Please enter number of laps: ");
                         asw.SetLaps(int.Parse(Console.ReadLine()));
                         System.Console.WriteLine("How many minutes you swap?");
@@ -32,7 +32,7 @@ class Program
                         actList.Add(asw);
                         break;
                     case 3:
-                        Activity_bicycles ab = new Activity_bicycles();
+                        ActivityBicycles ab = new ActivityBicycles();
                         System.Console.WriteLine("Please enter speed you ride the bike: (KMH)");
                         ab.SetSpeed(double.Parse(Console.ReadLine()));
                         System.Console.WriteLine("How many minutes you ran?");
@@ -45,9 +45,9 @@ class Program
                 }
             }
             System.Console.WriteLine("Do you want to report another activity? 1. Yes 2. No");
-            report = int.Parse(Console.ReadLine());
-        } while (report != 2);
-        System.Console.WriteLine("Thanks for using this App! There is your activity today: ");
+            _report = int.Parse(Console.ReadLine());
+        } while (_report != 2);
+        System.Console.WriteLine("Thanks for using this App! Here is your activity today: ");
         foreach (Activity a in actList)
         {
             System.Console.WriteLine(a.GetSummary());

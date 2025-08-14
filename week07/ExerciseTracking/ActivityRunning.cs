@@ -1,13 +1,13 @@
 using System.Data;
 
-public class Activity_Running : Activity
+public class ActivityRunning : Activity
 {
     private double _distance;
-    public Activity_Running(DateTime date, int minutes, double distance) : base(date, minutes)
+    public ActivityRunning(DateTime date, int minutes, double distance) : base(date, minutes)
     {
         _distance = distance;
     }
-    public Activity_Running()
+    public ActivityRunning()
     {
     }
     public void SetDistance(double distance)
@@ -28,9 +28,9 @@ public class Activity_Running : Activity
     }
     public override string GetSummary()
     {
-            return $"---Running---\n {GetDate():dd MMM yyyy} ({GetMinutes()} min) - " +
-           $"\nDistance: {GetDistance()} km, " +
-           $"\nSpeed: {GetSpeed()} kph, " +
-           $"\nPace: {GetPace()} min per km";
+        return $"---Running---\n {GetDate():dd MMM yyyy} ({GetMinutes()} min) - " +
+       $"\nDistance: {GetDistance()} km, " +
+       $"\nSpeed: {GetSpeed()} kph, " +
+       $"\nPace: {GetPace()} min per km";
     }
 }

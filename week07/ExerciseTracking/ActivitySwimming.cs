@@ -1,13 +1,13 @@
 using System.Data;
 
-public class Activity_Swimming : Activity
+public class ActivitySwimming : Activity
 {
     private int _laps;
-    public Activity_Swimming(DateTime date, int minutes, int laps) : base(date, minutes)
+    public ActivitySwimming(DateTime date, int minutes, int laps) : base(date, minutes)
     {
         _laps = laps;
     }
-    public Activity_Swimming() : base()
+    public ActivitySwimming() : base()
     {
     }
     public int GetLaps()
@@ -20,7 +20,7 @@ public class Activity_Swimming : Activity
     }
     public override double GetDistance()
     {
-        return (_laps * 50) / 1000;
+        return (GetLaps() * 50) / 1000;
     }
     public override double GetSpeed()
     {

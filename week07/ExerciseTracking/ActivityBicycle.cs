@@ -1,16 +1,16 @@
-public class Activity_bicycles : Activity
+public class ActivityBicycles : Activity
 {
     private double _speed;
-    public Activity_bicycles(DateTime date, int minutes, double speed) : base(date, minutes)
+    public ActivityBicycles(DateTime date, int minutes, double speed) : base(date, minutes)
     {
         _speed = speed;
     }
-    public Activity_bicycles()
+    public ActivityBicycles()
     {
     }
     public override double GetDistance()
     {
-        return (_speed * GetMinutes()) / 60;
+        return (GetSpeed() * GetMinutes()) / 60;
     }
     public void SetSpeed(double speed)
     {
